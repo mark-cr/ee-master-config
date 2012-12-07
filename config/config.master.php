@@ -91,7 +91,7 @@ if (isset($config))
 	 */
 	$protocol                          = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://';
 	$base_url                          = $protocol . $_SERVER['HTTP_HOST'];
-	$base_path                         = $_SERVER['DOCUMENT_ROOT'];
+	$base_path                         = rtrim($_SERVER['DOCUMENT_ROOT'],'/');
 	$system_folder                     = APPPATH . '../';
 	$images_folder                     = 'images';
 	$images_path                       = $base_path . '/' . $images_folder;
@@ -232,7 +232,7 @@ if (isset($config))
 	 * @see config/config.stage.php
 	 * @see config/config.prod.php
 	 */
-	require $_SERVER['DOCUMENT_ROOT'] . '/../config/config.' . ENV . '.php';
+	require $base_path . '/../config/config.' . ENV . '.php';
 
 
 
